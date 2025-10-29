@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎂 Selamat Ulang Tahun, Sayang! 🎉</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    html,body { height:100%; }
+    body{
+      background: linear-gradient(135deg,#ffd6e0 0%, #fff2e6 50%, #e6f7ff 100%);
+      font-family: "Poppins", "Comic Sans MS", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      overflow-x:hidden;
+    }
+    /* beruang */
+    .bear {
+      width:110px;
+      max-width:22vw;
+      min-width:80px;
+      animation: floaty 3.5s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%,100%{ transform: translateY(0) }
+      50%{ transform: translateY(-10px) }
+    }
+    /* hati */
+    .heart {
+      position: absolute;
+      pointer-events: none;
+      font-size: 20px;
+      opacity: .9;
+      animation: heartFloat 3.5s ease-in forwards;
+    }
+    @keyframes heartFloat {
+      0% { transform: translateY(0) scale(.9); opacity:1; }
+      80% { opacity:.6; }
+      100% { transform: translateY(-120vh) scale(1.6); opacity:0; }
+    }
+
+    /* tombol nyebelin */
+    .btn-nyebelin {
+      position: relative;
+      transition: transform .15s;
+    }
+
+    /* card */
+    .card {
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 8px 30px rgba(255,182,193,0.25);
+    }
+
+    /* responsive tweaks */
+    @media (min-width: 768px){
+      .bear { width:160px; min-width:120px; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <div class="w-full max-w-md mx-auto text-center">
+    <!-- BERUANG COUPLE -->
+    <div class="flex items-end justify-center gap-4 mb-3">
+      <img src="imgaa.jpeg" alt="bear1" class="bear animate__animated animate__swing">
+      <img src="imgaa2.jpeg" alt="bear2" class="bear animate__animated animate__pulse animate__infinite">
+    </div>
+
+    <!-- KARTU UCAPAN -->
+    <div class="card rounded-2xl p-6 text-center">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-pink-600 mb-2 animate__animated animate__bounceIn"> Selamat Ulang Tahun, Sayang 🎂</h1>
+
+      <!-- typewriter text -->
+      <p id="typed" class="text-gray-700 text-sm sm:text-base mb-4 min-h-[3.2rem]"></p>
+
+      <!-- paragraf romantis -->
+      <p class="text-gray-700 text-sm sm:text-base mb-4 italic">
+        Semoga kamu panjang umur, sehat selalu, dan nggak bosen sama aku yang nyebelin ini 💖
+      </p>
+
+      <!-- tombol pilihan -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mt-3">
+        <button id="loveBtn" class="px-5 py-2 rounded-full bg-pink-500 text-white font-semibold shadow-md btn-nyebelin hover:scale-105">
+          Aku Sayang Kamu ❤️
+        </button>
+
+        <button id="notLoveBtn" class="px-5 py-2 rounded-full bg-amber-300 text-amber-900 font-semibold shadow-md btn-nyebelin hover:scale-105">
+          Aku Nggak Sayang 😜
+        </button>
+      </div>
+
+      <!-- placeholder untuk pesan setelah klik "Aku Sayang" -->
+      <div id="afterLove" class="mt-4 hidden">
+        <p class="text-pink-600 font-semibold animate__animated animate__heartBeat">Awww~ aku juga sayang kamu! 💞</p>
+        <button id="galleryBtn" class="mt-3 px-4 py-2 rounded-full bg-white border border-pink-300 text-pink-600 shadow-sm">
+          Lihat Galeri Kita 📸
+        </button>
+      </div>
+    </div>
+
+    <!-- musik control -->
+    <div class="mt-4 flex justify-center items-center gap-3">
+      <button id="musicBtn" class="px-4 py-2 rounded-full bg-pink-600 text-white shadow hover:brightness-95">🎶 Putar Musik</button>
+      <small class="text-xs text-gray-600">Musik romantis</small>
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="bgm" loop>
+    <!-- gratis: bensound atau ganti dengan file sendiri -->
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Typed.js
+    new Typed('#typed', {
+      strings: [
+        "Sehat selalu yaa sayangkuuu 💕",
+        "Teruslah jadi dirimu: lucu, baik, dan sedikit usil 😍",
+        "Semogaa Semua Yang kamu Mau di kabulinn ",
+        "Semoga semua kebahagiaan menyertaimu setiap hari ✨"
+      ],
+      typeSpeed: 45,
+      backSpeed: 30,
+      backDelay: 1400,
+      loop: true
+    });
+
+    // hati beterbangan
+    function spawnHeart(){
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random()*100 + 'vw';
+      heart.style.fontSize = (14 + Math.random()*26) + 'px';
+      heart.textContent = ['💖','💘','💕','💞'][Math.floor(Math.random()*4)];
+      document.body.appendChild(heart);
+      setTimeout(()=> heart.remove(), 3800);
+    }
+    setInterval(spawnHeart, 600);
+
+    // tombol 'Aku Nggak Sayang' -> lari-lari
+    const notBtn = document.getElementById('notLoveBtn');
+    const loveBtn = document.getElementById('loveBtn');
+    const afterLove = document.getElementById('afterLove');
+    const galleryBtn = document.getElementById('galleryBtn');
+
+    // helper: tempatkan elemen di posisi acak aman (di dalam viewport, mempertahankan jarak)
+    function moveButtonRandom(btn){
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      // button size approx
+      const bw = Math.min( vw * 0.5, 220 );
+      const bh = 48;
+      const padding = 12;
+      // random position - ensure not offscreen
+      const left = Math.random() * (vw - bw - padding*2) + padding;
+      const top = Math.random() * (vh - bh - padding*2) + padding;
+      btn.style.position = 'fixed';
+      btn.style.left = left + 'px';
+      btn.style.top = top + 'px';
+      btn.style.zIndex = 9999;
+    }
+
+    // on mouseenter move a bit to be extra nyebelin
+    notBtn.addEventListener('mouseenter', () => {
+      moveButtonRandom(notBtn);
+    });
+
+    // also on click, jump away
+    notBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // quick wiggle
+      notBtn.classList.add('animate__animated','animate__tada');
+      setTimeout(()=> notBtn.classList.remove('animate__animated','animate__tada'),700);
+      moveButtonRandom(notBtn);
+      // spawn a teasing tooltip
+      const t = document.createElement('div');
+      t.textContent = "Hah! Coba lagi 😝";
+      t.style.position='fixed';
+      t.style.left = (parseFloat(notBtn.style.left||50) + 10) + 'px';
+      t.style.top = (parseFloat(notBtn.style.top||200) - 40) + 'px';
+      t.style.background = 'rgba(255,255,255,0.9)';
+      t.style.padding = '6px 10px';
+      t.style.borderRadius = '10px';
+      t.style.boxShadow = '0 6px 18px rgba(0,0,0,0.08)';
+      document.body.appendChild(t);
+      setTimeout(()=> t.remove(),1000);
+    });
+
+    // Aku Sayang -> show message + gallery button
+    loveBtn.addEventListener('click', () => {
+      afterLove.classList.remove('hidden');
+      afterLove.classList.add('animate__animated','animate__fadeInUp');
+      // small fireworks of hearts
+      for(let i=0;i<8;i++) setTimeout(spawnHeart, i*120);
+      // optional: gentle confetti using emoji
+      for(let i=0;i<10;i++){
+        setTimeout(()=> {
+          const e = document.createElement('div');
+          e.textContent = ['🎉','✨','💗'][Math.floor(Math.random()*3)];
+          e.style.position = 'fixed';
+          e.style.left = Math.random()*100 + 'vw';
+          e.style.top = Math.random()*100 + 'vh';
+          e.style.opacity = '0.9';
+          e.style.fontSize = (12 + Math.random()*28)+'px';
+          e.style.pointerEvents = 'none';
+          document.body.appendChild(e);
+          setTimeout(()=> e.remove(),1500);
+        }, i*90);
+      }
+    });
+
+    // gallery button -> navigate to gallery.html
+    galleryBtn.addEventListener('click', () => {
+      window.location.href = 'gallery.html';
+    });
+
+    // musik play/pause
+    const bgm = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    let playing = false;
+    musicBtn.addEventListener('click', () => {
+      if(!playing){
+        bgm.play();
+        musicBtn.textContent = '⏸️ Jeda Musik';
+      } else {
+        bgm.pause();
+        musicBtn.textContent = '🎶 Putar Musik';
+      }
+      playing = !playing;
+    });
+
+    // ensure buttons start in normal place when resizing
+    window.addEventListener('resize', ()=> {
+      notBtn.style.position = '';
+      notBtn.style.left = '';
+      notBtn.style.top = '';
+    });
+  </script>
+</body>
+</html>

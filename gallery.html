@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galeri Kita 📸</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    body{
+      min-height:100vh;
+      background: linear-gradient(180deg,#fff8fb,#f0fbff);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    .photo {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      background: white;
+    }
+  </style>
+</head>
+<body class="p-4">
+  <div class="max-w-5xl mx-auto text-center">
+    <header class="flex items-center justify-between py-6">
+      <h1 class="text-2xl font-bold text-pink-600">📸 Galeri Kita</h1>
+      <a href="index.html" class="px-4 py-2 bg-pink-500 text-white rounded-full shadow">Kembali</a>
+    </header>
+
+    <p class="mb-6 text-gray-600"></p>
+
+    <!-- grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <!-- contoh placeholder, ganti src dengan foto nyata (img1.jpg, img2.jpg, dll) -->
+      <div class="photo animate__animated animate__zoomIn">
+        <img src="img.jpg.jpg" alt="pic1" class="w-full h-48 object-cover">
+      </div>
+      <div class="photo animate__animated animate__zoomIn" style="animation-delay:.08s">
+        <img src="img1.jpg.jpg" alt="pic2" class="w-full h-48 object-cover">
+      </div>
+      <div class="photo animate__animated animate__zoomIn" style="animation-delay:.16s">
+        <img src="img2.jpg.jpg" alt="pic3" class="w-full h-48 object-cover">
+      </div>
+      <div class="photo animate__animated animate__zoomIn" style="animation-delay:.24s">
+        <img src="img3.jpg.jpg" alt="pic4" class="w-full h-48 object-cover">
+      </div>
+      <div class="photo animate__animated animate__zoomIn" style="animation-delay:.32s">
+        <img src="img4.jpg.jpg" alt="pic5" class="w-full h-48 object-cover">
+      </div>
+      <div class="photo animate__animated animate__zoomIn" style="animation-delay:.40s">
+        <img src="img5.jpg.jpg" alt="pic6" class="w-full h-48 object-cover">
+      </div>
+    </div>
+
+    <footer class="mt-6 text-sm text-gray-500">Terima kasih yaa udah mau sabar sama akuu.</footer>
+    <footer class="mt-6 text-sm text-gray-500">Love Youuu Every Second.</footer>
+    <footer class="mt-6 text-sm text-gray-500">Sayaaanggg BANGET SAMA KAMU.</footer>
+  </div>
+</body>
+</html>
